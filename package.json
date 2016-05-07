@@ -1,0 +1,10 @@
+{
+    "name": "esp8266-web-control-panel",
+    "version": "0.0.1",
+    "dependencies": {
+        "johnny-five": "latest",
+        "etherport-client": "latest",
+        "socket.io": "latest",
+        "socket.io-client": "latest"
+    }
+}
