@@ -18,7 +18,7 @@ var EtherPortClient = require("etherport-client").EtherPortClient;
 // update host to the IP address for your ESP board
 var board = new five.Board({
     port: new EtherPortClient({
-        host: "10.0.0.17", // UPDATE!
+        host: "10.0.0.17", // #TODO UPDATE!
         port: 3030
     }),
     timeout: 1e5,
