@@ -2,7 +2,7 @@
 ## using Johnny Five and Socket.IO
 * [WeMos D1](http://www.wemos.cc/Products/d1.html)
 * [Johnny Five](http://johnny-five.io/)
-* [Socket.IO](http://socket.io/)
+* [Socket.IO](http://socket.io/) + [Socket.IO - Node.js Client](https://github.com/socketio/socket.io-client)
 
 ## Requirements
 First install [Node.js](https://nodejs.org/) and follow [instructions](http://www.wemos.cc/tutorial/get_started_in_arduino.html) for installing newest hardware package **using git** for WeMos D1. [Here](https://www.arduino.cc/en/Main/Software) you can download Arduino 1.6.8 or higher. [(PL) [tutaj](http://majsterkowo.pl/arduino-na-ubuntu-linux/) znajdziesz opis instalacji Arduino po polsku)]. You need at least v2.2.0 of [ESP8266 Core](https://github.com/esp8266/Arduino).
@@ -41,4 +41,3 @@ In opposite to Johhny Five, you can check [Breakout](https://github.com/soundana
 * [etherport-client](https://github.com/mwittig/etherport-client) - Client-side virtual serial port for Rick Waldron's Etherport. Etherport-client is used to implement firmata-compatible boards and tethering hubs to control a board by a remote entity.
 * [Arduino Uno Example](http://wifinodebot.blogspot.com.co/2016/02/blink-led-over-wifi-with-nodejs-johnny.html)
 * [Javascript robotics and browser-based Arduino control](http://www.instructables.com/id/Javascript-robotics-and-browser-based-Arduino-cont/)
-* [Socket.IO Node.js Client](https://github.com/socketio/socket.io-client)
