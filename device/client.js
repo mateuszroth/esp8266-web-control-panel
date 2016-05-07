@@ -4,7 +4,7 @@ var board, led;
 
 var board = new five.Board({
   port: new EtherPortClient({
-    host: "192.168.1.113",
+    host: "192.168.1.113", // #TODO update esp device ip
     port: 3030
   }),
   timeout: 1e5,

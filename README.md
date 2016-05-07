@@ -36,6 +36,13 @@ Now you can try [code examples for Johhny Five](http://johnny-five.io/examples/)
 
 In opposite to Johhny Five, you can check [Breakout](https://github.com/soundanalogous/Breakout).
 
+## Build
+Run `npm install` to install packages.
+
+Start `server/server.js` on your server machine.
+
+Update ESP device and server IP in `device/client.js` file and start client.
+
 ## Links
 * [ESP8266 Firmata Issue on Github](https://github.com/firmata/arduino/issues/257)
 * [etherport-client](https://github.com/mwittig/etherport-client) - Client-side virtual serial port for Rick Waldron's Etherport. Etherport-client is used to implement firmata-compatible boards and tethering hubs to control a board by a remote entity.
