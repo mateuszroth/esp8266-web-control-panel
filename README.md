@@ -7,7 +7,7 @@
 ## Requirements
 First install [Node.js](https://nodejs.org/) and follow [instructions](http://www.wemos.cc/tutorial/get_started_in_arduino.html) for installing newest hardware package **using git** for WeMos D1. [Here](https://www.arduino.cc/en/Main/Software) you can download Arduino 1.6.8 or higher. [(PL) [tutaj](http://majsterkowo.pl/arduino-na-ubuntu-linux/) znajdziesz opis instalacji Arduino po polsku)]. You need at least v2.2.0 of [ESP8266 Core](https://github.com/esp8266/Arduino).
 
-Then install newest Firmata from master branch from [git repository](https://github.com/firmata/arduino). Now you can configure `wifiConfig.h` and upload [StandardFirmataWiFi](https://github.com/firmata/arduino/tree/master/examples/StandardFirmataWiFi) to your WeMos D1.
+Then install newest Firmata from master branch from [git repository](https://github.com/firmata/arduino). Now you can configure `wifiConfig.h` and upload [StandardFirmataWiFi](https://github.com/firmata/arduino/tree/master/examples/StandardFirmataWiFi) to your WeMos D1 in Arduino IDE.
 
 [Here's a simple firmata.js client example with additional instructions](https://gist.github.com/soundanalogous/31a43d9c72ec6fbdf9631cfbe635d625) (remember to install dependencies by using command `npm install firmata etherport-client --save`).
 
@@ -39,9 +39,9 @@ In opposite to Johhny Five, you can check [Breakout](https://github.com/soundana
 ## Build
 Run `npm install` to install packages.
 
-Start `server/server.js` on your server machine.
+Start `server/server.js` on your server machine (command `node server/server.js`).
 
-Update ESP device and server IP in `device/client.js` file and start client.
+Update ESP device and server IP in `device/client.js` file and start client (command `node device/client.js`).
 
 ## Links
 * [ESP8266 Firmata Issue on Github](https://github.com/firmata/arduino/issues/257)
