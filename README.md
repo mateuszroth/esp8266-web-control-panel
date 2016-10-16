@@ -5,7 +5,7 @@
 * [Socket.IO](http://socket.io/) + [Socket.IO - Node.js Client](https://github.com/socketio/socket.io-client)
 
 ## Requirements
-First install [Node.js](https://nodejs.org/) and follow [instructions](http://www.wemos.cc/tutorial/get_started_in_arduino.html) for installing newest hardware package **using git** for WeMos D1. [Here](https://www.arduino.cc/en/Main/Software) you can download Arduino 1.6.8 or higher. [(PL) [tutaj](http://majsterkowo.pl/arduino-na-ubuntu-linux/) znajdziesz opis instalacji Arduino po polsku)]. You need at least v2.2.0 of [ESP8266 Core](https://github.com/esp8266/Arduino).
+First install [Node.js](https://nodejs.org/) and follow [instructions](https://www.wemos.cc/tutorial/get-started-arduino.html) for installing the newest hardware package **using git** for WeMos D1. [Here](https://www.arduino.cc/en/Main/Software) you can download Arduino 1.6.8 or higher. [(PL only) [tutaj](http://majsterkowo.pl/arduino-na-ubuntu-linux/) znajdziesz opis instalacji Arduino po polsku)]. You need at least v2.2.0 of [ESP8266 Core](https://github.com/esp8266/Arduino).
 
 Then install newest Firmata from master branch from [git repository](https://github.com/firmata/arduino). Now you can configure `wifiConfig.h` and upload [StandardFirmataWiFi](https://github.com/firmata/arduino/tree/master/examples/StandardFirmataWiFi) to your WeMos D1 in Arduino IDE.
 
