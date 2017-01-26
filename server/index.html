@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Arduino / WeMos D1 connectivity test</title>
+    <title>Home Security System</title>
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
@@ -21,15 +21,52 @@
     <![endif]-->
   </head>
   <body>
-    <div class="container">
-    <h1>WeMos D1 Web Control Panel</h1>
-    <div class="row">
-      <div class="col-md-12">
-      <h4>LED Pulse Delay (ms)</h4>
-      <p><input type="text" class="form-control" id="ledDelay" name="ledDelay" value="1000" /></p>
-      <p><button id="ledSet" class="btn btn-primary">Set Delay</button></p>
-      </div>
+    <div class="jumbotron text-center">
+      <h1>Home Security System</h1>
+      <p>Based on WeMos D1 Web Control Panel</p>
     </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Motion Sensor</h4>
+          <div id="armHeader" class="alert alert-success">
+            <span>I'm armed!</span>
+          </div>
+          <div id="disarmHeader" class="alert alert-warning">
+            <span>I'm disarmed.</span>
+          </div>
+          <div id="detectedHeader" class="alert alert-danger">
+            <span><strong><blink>JESUS CHRIST! SOMEONE IS IN YOUR HOUSE!</blink></strong></span>
+          </div>
+        <!-- <p><input type="text" class="form-control" id="ledDelay" name="ledDelay" value="1000" /></p> -->
+          <div class="col-md-1">
+            <button id="arm" class="btn btn-success">Arm</button>
+          </div>
+          <div class="col-md-1">
+            <button id="disarm" class="btn btn-danger">Disarm</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 style="color:red;"><span class="glyphicon glyphicon-lock"></span> ALERTTT!!!</h4>
+            </div>
+            <div class="modal-body">
+              <div id="detectedHeader" class="alert alert-danger">
+                <span><strong><blink>JESUS CHRIST! SOMEONE IS IN YOUR HOUSE!</blink></strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -39,18 +76,54 @@
     <script>
       var socket = io.connect('http://localhost:8080');
 
+      function showArmedHeader() {
+
+        $('#armHeader').show();
+        $('#disarmHeader').hide();
+        $('#detectedHeader').hide();
+
+      }
+
+      function showDisarmedHeader() {
+
+        $('#armHeader').hide();
+        $('#disarmHeader').show();
+        $('#detectedHeader').hide();
+
+      }
+
       socket.on('news', function (data) {
         console.log(data);
+
+        $('#armHeader').show();
+        $('#disarmHeader').hide();
+        $('#detectedHeader').hide();
+        socket.emit('arm',{arm:1});
+
       });
 
-      socket.on('ledSignal', function (data) {
-        console.log("LED Delay ",data.delay," emitted from server to device");
+      socket.on('detected', function (data) {
+        console.log(data);
+        $('#detectedHeader').show();
+        $("#myModal").modal();
       });
 
-      $('#ledSet').on('click',function(){
-        var tmp = parseInt($('#ledDelay').val(),10);
-        console.log("Setting LED Delay:",tmp)
-        socket.emit('ledWeb',{delay:tmp});
+      socket.on('armSignal', function (data) {
+        console.log("arm is ",data.arm," emitted from server to device");
+      });
+
+      $('#arm').on('click',function() {
+        // var tmp = parseInt($('#ledDelay').val(),10);
+        showArmedHeader();
+        console.log("Arm:", 1)
+        socket.emit('arm',{arm:1});
+      });
+
+      $('#disarm').on('click',function() {
+        // var tmp = parseInt($('#ledDelay').val(),10);
+        showDisarmedHeader();
+        console.log("Arm:", 0)
+        socket.emit('arm',{arm:0});
       });
     </script>
     </body>
