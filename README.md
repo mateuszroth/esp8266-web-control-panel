@@ -1,7 +1,7 @@
 # WeMos D1 (ESP8266) Web Control Panel via WiFi
-## using Firmata, Johnny Five and Socket.IO
+## using Firmata, Johnny Five (JavaScript) and Socket.IO
 * [WeMos D1](https://wiki.wemos.cc/products:d1:d1)
-* [Johnny Five](http://johnny-five.io/)
+* [Johnny Five](http://johnny-five.io/) (JavaScript)
 * [Socket.IO](http://socket.io/) + [Socket.IO - Node.js Client](https://github.com/socketio/socket.io-client)
 
 ## Requirements
@@ -26,10 +26,10 @@
 *Yay, you board is configured and ready to communicate via Firmata with your JavaScript code on your computer!*
 
 ## Test Firmata.js with your board
-Firmata.js is the base for Johnny Five so let's test it with our board which has StandardFirmataWiFi deployed. [Here's a simple Firmata.js client example with additional instructions](https://gist.github.com/soundanalogous/31a43d9c72ec6fbdf9631cfbe635d625) (remember to install dependencies by using command `npm install firmata etherport-client --save`).
+Firmata.js is the base for Johnny Five so let's test it with our board which has StandardFirmataWiFi deployed. [Here's a simple Firmata.js client example with additional instructions](https://gist.github.com/soundanalogous/31a43d9c72ec6fbdf9631cfbe635d625). Just copy source code to a file for example named `index.js`. Then run command `npm install firmata etherport-client node-serialport --save` to install dependencies and run the code by using `node index.js`. The LED on digital pin 13 should blink.
 
 ## Test Johnny Five
-If everything was done well, you can check simple J5 code (remember to install dependencies by using command `npm install johnny-five etherport-client --save`):
+If everything was done well, you can check simple J5 code (remember to install dependencies by using command `npm install johnny-five etherport-client node-serialport --save`):
 ```javascript
 var five = require("johnny-five");
 var EtherPortClient = require("etherport-client").EtherPortClient;
@@ -54,7 +54,7 @@ Now you can try [code examples for Johhny Five](http://johnny-five.io/examples/)
 
 In opposite to Johhny Five, you can check [Breakout](https://github.com/soundanalogous/Breakout).
 
-## Build
+## Build the web panel from the repo
 Run `npm install` to install packages.
 
 Start `server/server.js` on your server machine (command `node server/server.js`).
