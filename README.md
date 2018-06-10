@@ -71,7 +71,7 @@ There are two versions of the WeMos D1, called the "D1" and the "D2 R2". There a
 [Source](https://forum.arduino.cc/index.php?topic=446563.0)
 
 ## WeMos D1 R2 vs Arduino UNO
-![WeMos D1 R2 vs Arduino UNO](wemos-d1r1-vs-d1r2.png).
+![WeMos D1 R2 vs Arduino UNO](arduino-uno-vs-wemos-d1r2.jpg).
 Sources:
 * http://www.instructables.com/id/Programming-the-WeMos-Using-Arduino-SoftwareIDE/
 * http://www.instructables.com/file/FNU5UQRIMTE9CWV/
