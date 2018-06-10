@@ -4,7 +4,7 @@ var board, led;
 
 var board = new five.Board({
   port: new EtherPortClient({
-    host: "192.168.1.113", // #TODO update esp device ip
+    host: "192.168.43.111", // #TODO update esp device ip
     port: 3030
   }),
   timeout: 1e5,
@@ -15,7 +15,7 @@ board.on("ready", function() {
   console.log("READY!");
 
   // init a led on pin 2, strobe every 1000ms
-  led = new five.Led(2).strobe(1000);
+  led = new five.Led(13).strobe(1000);
 
   // setup a standard servo, center at start
   servo = new five.Servo({
@@ -32,7 +32,7 @@ board.on("ready", function() {
   });
 });
 
-var socket = require('socket.io-client')('http://192.168.1.102:8080'); // #TODO update server ip
+var socket = require('socket.io-client')('http://192.168.43.209:8080'); // #TODO update server ip
 socket.on('news', function (data) {
   console.log(data);
 });

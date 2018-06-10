@@ -13,23 +13,25 @@
 	1. Install the required driver (CH340G or CP2104).
 	2. Follow instructions from the `Using git version` section.
 	3. While instaling the hardware package, make sure you have at least v2.2.0 of [ESP8266 Core](https://github.com/esp8266/Arduino) (on Mac, check in your terminal `cat ~/Documents/Arduino/hardware/esp8266com/esp8266/package.json`).
-	4. After install hardware package, you will see WEMOS boards in the Tools→Board:xxx Choose your right board.
+	4. After install hardware package, you will see WEMOS boards in the `Tools→Board:xxx`. Choose your right board.
 2. Then install newest Firmata from master branch from [git repository](https://github.com/firmata/arduino) (on Mac you have to delete existing Firmata directory `~/Documents/Arduino/libraries/Firmata` and then run `git clone git@github.com:firmata/arduino.git ~/Documents/Arduino/libraries/Firmata` in your terminal). Firmata is a protocol that will allow us to communicate with our microcontroller using languages like JavaScript.
 3. Now you can use [StandardFirmataWiFi](https://github.com/firmata/arduino/tree/master/examples/StandardFirmataWiFi) (in Arduino, choose File -> Examples -> Firmata -> StandardFirmataWiFi) which enables the use of Firmata over a TCP connection and it can be configured as either a TCP server or TCP client.
 	1. Configure `wifiConfig.h` (ESP8266 is enabled by default but follow all the 6 steps).
-	2. You can skip step 2 and 4 but I prefer to have a static IP for both the computer and the board.
+	2. You can skip step 4 but I prefer to have a static IP for both the computer and the board. If you decide to use static IP then on Mac you can check the router IP address and the network mask in `Settings -> Network -> Advanced -> TCP/IP`.
 	2. Enable Serial debugging by uncommenting `//#define SERIAL_DEBUG` in StandardFirmataWiFi.
 	3. Then upload the project to your WeMos D1 in Arduino IDE.
 4. Check if the connection is configured properly by opening Serial Monitor (in Arduino, Tools -> Serial Monitor) at baud 9600. If the board is sending `WiFi connection failed` then try to reconfigure `wifiConfig.h` or try to use another WiFi point (your computer and the board should be in the same network).
 	1. While I used hotspot on my mobile, it worked only for 2.4 GHz and not for 5 GHz.
 
-*Yay, you board is configured and ready to communicate via Firmata with your JavaScript code on your computer!*
+*Yay, your board is configured and ready to communicate via Firmata with your JavaScript code on your computer!*
 
 ## Test Firmata.js with your board
-Firmata.js is the base for Johnny Five so let's test it with our board which has StandardFirmataWiFi deployed. [Here's a simple Firmata.js client example with additional instructions](https://gist.github.com/soundanalogous/31a43d9c72ec6fbdf9631cfbe635d625). Just copy source code to a file for example named `index.js`. Then run command `npm install firmata etherport-client node-serialport --save` to install dependencies and run the code by using `node index.js`. The LED on digital pin 13 should blink.
+Firmata.js is the base for Johnny Five so let's test it with our board which has StandardFirmataWiFi deployed. [Here's a simple Firmata.js client example with additional instructions](https://gist.github.com/soundanalogous/31a43d9c72ec6fbdf9631cfbe635d625). Just copy source code to a file for example named `index.js` and use correct IP address. Then run command `npm install firmata etherport-client serialport --save` to install dependencies and run the code by using `node index.js`. The LED on digital pin 2 should blink. You can change the pin to something different, for example digital pin 13.
+
+If you're having some troubles with running the script, the command `npm install serialport --build-from-source --save` may help.
 
 ## Test Johnny Five
-If everything was done well, you can check simple J5 code (remember to install dependencies by using command `npm install johnny-five etherport-client node-serialport --save`):
+If everything was done well, you can check simple J5 code (remember to install dependencies by using command `npm install johnny-five etherport-client serialport --save`):
 ```javascript
 var five = require("johnny-five");
 var EtherPortClient = require("etherport-client").EtherPortClient;
@@ -66,3 +68,10 @@ Update ESP device and server IP in `device/client.js` file and start client (com
 * [etherport-client](https://github.com/mwittig/etherport-client) - Client-side virtual serial port for Rick Waldron's Etherport. Etherport-client is used to implement firmata-compatible boards and tethering hubs to control a board by a remote entity.
 * [Arduino Uno Example](http://wifinodebot.blogspot.com.co/2016/02/blink-led-over-wifi-with-nodejs-johnny.html)
 * [Javascript robotics and browser-based Arduino control](http://www.instructables.com/id/Javascript-robotics-and-browser-based-Arduino-cont/)
+
+Other helpful links:
+* https://github.com/rwaldron/johnny-five/issues/1177#issuecomment-232732885
+* https://diyprojects.io/connecting-esp8266-blynk-johnny-five-firmata-wifi/#.WxPilFOFPpA
+* https://github.com/rwaldron/johnny-five/wiki/Getting-Started#trouble-shooting
+* http://www.esp8266learning.com/wemos-webserver-example.php
+* https://code.tutsplus.com/tutorials/how-to-create-a-smart-device-with-arduino-and-nodejs-using-pubnub--cms-25508
