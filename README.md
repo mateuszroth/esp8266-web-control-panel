@@ -2,7 +2,7 @@
 ## using Firmata, Johnny Five (JavaScript) and Socket.IO
 ### not tested but after updating pins should work with WeMos D1R2 and Arduino UNO
 
-Programming the ESP8266 WeMos-D1R2 using JavaScript library Johnny Five to work remotely.
+Programming the ESP8266 WeMos D1 using JavaScript library Johnny Five to work remotely.
 
 * [WeMos D1](https://wiki.wemos.cc/products:d1:d1)
 * [Johnny Five](http://johnny-five.io/) (JavaScript)
