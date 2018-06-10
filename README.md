@@ -1,6 +1,9 @@
 # WeMos D1 (ESP8266) Web Control Panel via WiFi
 ## using Firmata, Johnny Five (JavaScript) and Socket.IO
+### not tested but after updating pins should work with WeMos D1R2 and Arduino UNO
+
 Programming the ESP8266 WeMos-D1R2 using JavaScript library Johnny Five to work remotely.
+
 * [WeMos D1](https://wiki.wemos.cc/products:d1:d1)
 * [Johnny Five](http://johnny-five.io/) (JavaScript)
 * [Socket.IO](http://socket.io/) + [Socket.IO - Node.js Client](https://github.com/socketio/socket.io-client)
