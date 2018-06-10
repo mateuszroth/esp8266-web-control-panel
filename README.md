@@ -67,11 +67,16 @@ Update ESP device and server IP in `device/client.js` file and start client (com
 
 ## WeMos D1 vs D1 R2
 There are two versions of the WeMos D1, called the "D1" and the "D2 R2". There are some pin differences between them.
-![WeMos D1 vs D1 R2](wemos-d1r1-vs-d1r2.png).
+
+![WeMos D1 vs D1 R2](wemos-d1r1-vs-d1r2.png)
+
 [Source](https://forum.arduino.cc/index.php?topic=446563.0)
 
 ## WeMos D1 R2 vs Arduino UNO
-![WeMos D1 R2 vs Arduino UNO](arduino-uno-vs-wemos-d1r2.jpg).
+There are some differences between these two boards.
+
+![WeMos D1 R2 vs Arduino UNO](arduino-uno-vs-wemos-d1r2.jpg)
+
 Sources:
 * http://www.instructables.com/id/Programming-the-WeMos-Using-Arduino-SoftwareIDE/
 * http://www.instructables.com/file/FNU5UQRIMTE9CWV/
