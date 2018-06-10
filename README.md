@@ -1,5 +1,6 @@
 # WeMos D1 (ESP8266) Web Control Panel via WiFi
 ## using Firmata, Johnny Five (JavaScript) and Socket.IO
+Programming the ESP8266 WeMos-D1R2 using JavaScript library Johnny Five to work remotely.
 * [WeMos D1](https://wiki.wemos.cc/products:d1:d1)
 * [Johnny Five](http://johnny-five.io/) (JavaScript)
 * [Socket.IO](http://socket.io/) + [Socket.IO - Node.js Client](https://github.com/socketio/socket.io-client)
@@ -13,13 +14,14 @@
 	1. Install the required driver (CH340G or CP2104).
 	2. Follow instructions from the `Using git version` section.
 	3. While instaling the hardware package, make sure you have at least v2.2.0 of [ESP8266 Core](https://github.com/esp8266/Arduino) (on Mac, check in your terminal `cat ~/Documents/Arduino/hardware/esp8266com/esp8266/package.json`).
-	4. After install hardware package, you will see WEMOS boards in the `Tools→Board:xxx`. Choose your right board.
+	4. After install hardware package, you will see WeMos boards in the `Tools→Board:xxx`. Choose your right board.
 2. Then install newest Firmata from master branch from [git repository](https://github.com/firmata/arduino) (on Mac you have to delete existing Firmata directory `~/Documents/Arduino/libraries/Firmata` and then run `git clone git@github.com:firmata/arduino.git ~/Documents/Arduino/libraries/Firmata` in your terminal). Firmata is a protocol that will allow us to communicate with our microcontroller using languages like JavaScript.
 3. Now you can use [StandardFirmataWiFi](https://github.com/firmata/arduino/tree/master/examples/StandardFirmataWiFi) (in Arduino, choose File -> Examples -> Firmata -> StandardFirmataWiFi) which enables the use of Firmata over a TCP connection and it can be configured as either a TCP server or TCP client.
 	1. Configure `wifiConfig.h` (ESP8266 is enabled by default but follow all the 6 steps).
 	2. You can skip step 4 but I prefer to have a static IP for both the computer and the board. If you decide to use static IP then on Mac you can check the router IP address and the network mask in `Settings -> Network -> Advanced -> TCP/IP`.
 	2. Enable Serial debugging by uncommenting `//#define SERIAL_DEBUG` in StandardFirmataWiFi.
-	3. Then upload the project to your WeMos D1 in Arduino IDE.
+	3. Change Upload Speed in `Menu -> Upload Speed` to `115200`.
+	4. Then upload the project to your WeMos D1 in Arduino IDE.
 4. Check if the connection is configured properly by opening Serial Monitor (in Arduino, Tools -> Serial Monitor) at baud 9600. If the board is sending `WiFi connection failed` then try to reconfigure `wifiConfig.h` or try to use another WiFi point (your computer and the board should be in the same network).
 	1. While I used hotspot on my mobile, it worked only for 2.4 GHz and not for 5 GHz.
 
@@ -62,6 +64,18 @@ Run `npm install` to install packages.
 Start `server/server.js` on your server machine (command `node server/server.js`).
 
 Update ESP device and server IP in `device/client.js` file and start client (command `node device/client.js`).
+
+## WeMos D1 vs D1 R2
+There are two versions of the WeMos D1, called the "D1" and the "D2 R2". There are some pin differences between them.
+![WeMos D1 vs D1 R2](wemos-d1r1-vs-d1r2.png).
+[Source](https://forum.arduino.cc/index.php?topic=446563.0)
+
+## WeMos D1 R2 vs Arduino UNO
+![WeMos D1 R2 vs Arduino UNO](wemos-d1r1-vs-d1r2.png).
+Sources:
+* http://www.instructables.com/id/Programming-the-WeMos-Using-Arduino-SoftwareIDE/
+* http://www.instructables.com/file/FNU5UQRIMTE9CWV/
+
 
 ## Links
 * [ESP8266 Firmata Issue on Github](https://github.com/firmata/arduino/issues/257)
